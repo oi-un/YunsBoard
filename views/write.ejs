@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/main.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <%- include('header.ejs') %>
+      <article class="main-section container clear-both">
+        <%- include('sidebar.ejs') %>
+        <main class="float-l">
+          <div class="main-top">
+            <h3 class="main-title">글 작성하기</h3>
+          </div>
+
+          <div class="main-content">
+            <form class="write-frm" action="/write" method="post">
+              <table class="form-table">
+                <tr>
+                  <td class="title">
+                    <input type="text" name="title" class="form-title-input float-l" id="form-title" placeholder="제목을 입력해 주세요." />
+                    <span class="alert"> 제목을 입력하세요. </span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="content">
+                    <textarea name="content" class="form-content" placeholder="내용을 입력해 주세요."></textarea>
+                    <span class="alert"> 내용을 입력하세요. </span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <input type="file" name="img" id="" />
+                  </td>
+                </tr>
+              </table>
+
+              <div class="form-btn">
+                <button class="menu-btn submit-btn" type="button">작성완료</button>
+              </div>
+
+              <!-- hidden input -->
+              <input type="hidden" name="writer" value="<%= result[0].name %>" />
+              <input type="hidden" name="date" value="" />
+            </form>
+          </div>
+        </main>
+      </article>
+    </div>
+
+    <script src="https://kit.fontawesome.com/1a03dd2ba1.js" crossorigin="anonymous"></script>
+    <script src="/main.js"></script>
+
+    <script>
+      let now = new Date();
+      let year = now.getFullYear();
+      let month = now.getMonth() + 1;
+      let day = now.getDate();
+
+      if (month < 10) {
+        month = "0" + month;
+      }
+      if (day < 10) {
+        day = "0" + day;
+      }
+
+      let date = document.getElementsByName("date")[0];
+      date.value = `${year}-${month}-${day}`;
+    </script>
+  </body>
+</html>

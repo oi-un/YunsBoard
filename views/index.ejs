@@ -7,6 +7,48 @@
     <link rel="stylesheet" href="/main.css" />
   </head>
   <body>
-    HI
+    <div class="wrap">
+      <%- include('header.ejs') %>
+      <article class="main-section container clear-both">
+        <%- include('sidebar.ejs') %>
+        <main class="float-l">
+          <div class="main-top">
+            <h3 class="main-title">HOME</h3>
+            <div class="main-btn">
+              <button class="menu-btn active">전체 글</button>
+              <button class="menu-btn">인기 글</button>
+              <button class="menu-btn">내가 쓴 글</button>
+              <button class="menu-btn">좋아한 글</button>
+            </div>
+          </div>
+
+          <div class="main-content">
+            <%for(let i=0; i<result.length; i++){%>
+              <a href="/post/<%= result[i]._id %>">
+                <div class="post-container">
+                  <div class="post-content">
+                    <h5 class="post-title"><%= result[i].title %></h5>
+                    <p class="post-text">
+                      <%= result[i].content %>
+                    </p>
+                    <p class="post-date"><%= result[i].date %></p>
+                  </div>
+                  <div class="post-img">
+                    <img
+                      src="<%= result[i].img %>"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </a>
+            <%}%>
+            
+          </div>
+        </main>
+      </article>
+    </div>
+
+    <script src="https://kit.fontawesome.com/1a03dd2ba1.js" crossorigin="anonymous"></script>
+    <script src="/main.js"></script>
   </body>
 </html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/main.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <%- include('header.ejs') %>
+      <article class="main-section container clear-both">
+        <%- include('sidebar.ejs') %>
+        <main class="float-l">
+          <div class="main-top">
+            <h3 class="main-title">게시글</h3>
+          </div>
+
+          <div class="main-content">
+            <div class="post">
+              <div class="post-top">
+                <h3 class="post-title"><%= result.title %></h3>
+                <p class="post-date">작성자: <%= result.writer %> &nbsp;&nbsp; 작성일: <%= result.date %></p>
+              </div>
+              <div class="post-bottom">
+                <div class="post-content"><%= result.content %></div>
+                <div class="post-btn">
+                  <button>
+                    <i class="fa-regular fa-thumbs-up"></i>
+                  </button>
+                  <button>
+                    <i class="fa-solid fa-thumbs-up"></i>
+                  </button>
+                  <button>
+                    <i class="fa-solid fa-pen"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="comment-container">
+              <form action="">
+                <textarea name="" id="addComment" placeholder="댓글을 입력해 주세요." aria-atomic="true"></textarea>
+                <button type="button" class="menu-btn">전송</button>
+              </form>
+              <div class="comment">
+                <div class="comment-l">
+                  <span class="profile">작성자</span>
+                </div>
+                <div class="comment-r">
+                  <p class="comment-user">댓글 작성자</p>
+                  <p class="comment-content">댓글 내용</p>
+                  <p class="comment-date">
+                    2024-05-07
+                    <button class="change-comment">
+                      <i class="fa-solid fa-pen"></i>
+                    </button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </article>
+    </div>
+
+    <script src="https://kit.fontawesome.com/1a03dd2ba1.js" crossorigin="anonymous"></script>
+    <script src="/main.js"></script>
+  </body>
+</html>
